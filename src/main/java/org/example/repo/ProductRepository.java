@@ -19,8 +19,12 @@ public class ProductRepository {
 
     public List<Product> getProducts(){
         List<Product> products = mongoTemplate.findAll(Product.class);
+        //for debugging purporse
         System.out.println("------product size-----"+products.size());
         return mongoTemplate.findAll(Product.class);
     }
 
+    public Product createProduct(Product product) {
+        return mongoTemplate.insert(product);
+    }
 }

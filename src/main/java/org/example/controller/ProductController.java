@@ -1,10 +1,7 @@
 package org.example.controller;
 
 import org.example.DTOs.ProductDto;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.example.service.ProductService;
 
 import java.util.ArrayList;
@@ -27,4 +24,8 @@ public class ProductController {
         return products;
     }
 
+    @PostMapping("/create/product")
+    public ProductDto createProduct(@RequestBody ProductDto productDto){
+        return productService.createProduct(productDto);
+    }
 }
