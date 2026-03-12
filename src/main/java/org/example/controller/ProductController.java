@@ -4,7 +4,6 @@ import org.example.DTOs.ProductDto;
 import org.springframework.web.bind.annotation.*;
 import org.example.service.ProductService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,15 +16,20 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/products")
+    @GetMapping("/product/all")
     public List<ProductDto> getProducts() {
-        List<ProductDto> products = new ArrayList<>();
+        List<ProductDto> products;
         products = productService.getProducts();
         return products;
     }
 
-    @PostMapping("/create/product")
+    @PostMapping("/product/create")
     public ProductDto createProduct(@RequestBody ProductDto productDto){
         return productService.createProduct(productDto);
+    }
+
+    @GetMapping("/product/{id}")
+    public ProductDto getProductById(@PathVariable String id){
+        return productService.getProductById(id);
     }
 }

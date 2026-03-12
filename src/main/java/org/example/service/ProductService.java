@@ -31,4 +31,9 @@ public class ProductService {
         Product product1 = productRepository.createProduct(product);
         return new ProductDto(product1.getName(),product1.getAmount());
     }
+
+    public ProductDto getProductById(String id) {
+       Product product = productRepository.getProductById(id);
+       return new ProductDto(product.getName(),product.getAmount());
+    }
 }

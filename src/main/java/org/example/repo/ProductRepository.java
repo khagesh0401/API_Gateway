@@ -1,17 +1,15 @@
 package org.example.repo;
 
-import org.example.DTOs.ProductDto;
 import org.example.model.Product;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class ProductRepository {
 
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
     public ProductRepository(MongoTemplate mongoTemplate){
         this.mongoTemplate = mongoTemplate;
@@ -26,5 +24,9 @@ public class ProductRepository {
 
     public Product createProduct(Product product) {
         return mongoTemplate.insert(product);
+    }
+
+    public Product getProductById(String id) {
+        return mongoTemplate.findById(id, Product.class);
     }
 }
