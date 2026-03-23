@@ -1,12 +1,10 @@
 package org.example.model;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import java.util.UUID;
 
 @Data
 @Document(collection = "Products")
@@ -15,4 +13,11 @@ public class Product {
     private String id;
     private String name;
     private String amount;
+
+    public Product(){}
+
+    public Product(String name, String amount) {
+        this.name=name;
+        this.amount=amount;
+    }
 }

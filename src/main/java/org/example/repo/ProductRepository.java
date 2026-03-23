@@ -29,4 +29,14 @@ public class ProductRepository {
     public Product getProductById(String id) {
         return mongoTemplate.findById(id, Product.class);
     }
+
+    public Product updateProductById(String id, Product newProductDetails) {
+        Product product = mongoTemplate.findById(id,Product.class);
+        if(product!=null){
+        product.setName(newProductDetails.getName());
+        product.setAmount(newProductDetails.getAmount());
+        mongoTemplate.save(product);
+        return product;}
+        return null;
+    }
 }
